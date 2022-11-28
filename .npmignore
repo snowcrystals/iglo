@@ -1,0 +1,26 @@
+# Directories
+.husky
+src
+.yarn
+.github
+
+# Eslint files
+.eslintignore
+.eslintrc.json
+
+# Git files
+.gitignore
+
+# Config files
+.commitlintrc.json
+.lintstagedrc.json
+.prettierrc.cjs
+renovate.json
+
+# Build config
+tsconfig.eslint.json
+tsconfig.json
+
+# Yarn files
+yarn.lock
+.yarnrc.yml
