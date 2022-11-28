@@ -2,12 +2,12 @@
     <img src="https://raw.githubusercontent.com/snowcrystals/.github/main/logo.png" width="100px" />
     <h1>@snowcrystals/iglo</h1>
   
-  <p>Just like any other framework, but better. 🧊</p>
+  <p>Just like any other Discord.js framework, but better. 🧊</p>
   
   <p align="center">
     <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg" />
     <a href="/LICENSE" target="_blank">
-      <img alt="License: None" src="https://img.shields.io/badge/License-None-yellow.svg" />
+      <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
     </a>
   </p>
 
@@ -43,6 +43,6 @@ This will always be open source project, even if I don't receive donations. But 
 
 ## License
 
-Project is licensed under the © [**None License**](/LICENSE)
+Project is licensed under the © [**MIT License**](/LICENSE)
 
 ---
