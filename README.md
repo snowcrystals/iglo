@@ -1,6 +1,6 @@
 <div align="center">
     <img src="https://raw.githubusercontent.com/snowcrystals/.github/main/logo.png" width="100px" />
-    <h1>@ijskoud/iglo</h1>
+    <h1>@snowcrystals/iglo</h1>
   
   <p>Just like any other framework, but better. 🧊</p>
   
