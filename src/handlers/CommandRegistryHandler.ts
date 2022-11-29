@@ -137,6 +137,7 @@ export class CommandRegistry {
 			return "defaultMemberPermissions";
 
 		// TODO: fix check because of undefined object properties
+		// -> https://github.com/sapphiredev/framework/blob/main/src/lib/utils/application-commands/computeDifferences.ts
 		if (!_.isEqual(discord.options, command.options)) return "options";
 
 		return null;
