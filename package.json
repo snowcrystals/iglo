@@ -25,7 +25,8 @@
 		"lint": "eslint src",
 		"postinstall": "is-ci || husky install",
 		"prepack": "pinst --disable",
-		"postpack": "pinst --enable"
+		"postpack": "pinst --enable",
+		"bump": "cliff-jumper"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.3.0",
@@ -57,6 +58,7 @@
 	},
 	"packageManager": "yarn@3.3.0",
 	"dependencies": {
+		"@favware/cliff-jumper": "^1.9.0",
 		"@snowcrystals/icicle": "^1.0.0",
 		"discord.js": "^14.7.0",
 		"lodash": "^4.17.21"
