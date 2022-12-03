@@ -47,11 +47,10 @@ export class CommandRegistry {
 							)} was different.`
 						);
 						await different.discord.edit(this.getCommandData(different.command.command));
-						return;
+					} else {
+						this.client.logger.debug(`(CommandRegistry): Creating a new command with name: ${bold(different.command.command.name)}.`);
+						await this.client.application?.commands.create(this.getCommandData(different.command.command));
 					}
-
-					this.client.logger.debug(`(CommandRegistry): Creating a new command with name: ${bold(different.command.command.name)}.`);
-					await this.client.application?.commands.create(this.getCommandData(different.command.command));
 				} catch (error) {
 					this.client.logger.fatal(
 						`(CommandRegistry): unable to update/create a command with name: ${bold(different.command.command.name)}.`
