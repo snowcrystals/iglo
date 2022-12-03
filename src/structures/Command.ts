@@ -15,9 +15,10 @@ export class Command extends Base implements CommandOptions {
 	public name: string;
 	public nameLocalizations?: Partial<Record<Locale, string>> | undefined;
 
-	public options: APIApplicationCommandOption[];
-
 	public descriptions: Partial<Record<Locale, string>>;
+	public description: string;
+
+	public options: APIApplicationCommandOption[];
 	public permissions: CommandPermissions;
 
 	/** The category of the command (automatically set by the commandHandler) */
@@ -32,9 +33,10 @@ export class Command extends Base implements CommandOptions {
 		this.name = options.name;
 		this.nameLocalizations = options.nameLocalizations;
 
-		this.options = options.options ?? [];
+		this.descriptions = options.descriptions ?? {};
+		this.description = options.description;
 
-		this.descriptions = options.descriptions;
+		this.options = options.options ?? [];
 		this.permissions = { dm: true, ...options.permissions };
 	}
 
@@ -84,8 +86,10 @@ export interface CommandOptions {
 	name: string;
 	/** The name localizations of the command */
 	nameLocalizations?: Partial<Record<Locale, string>>;
+	/** The default description of the command. */
+	description: string;
 	/** A small description about the command. The English translation will also be used as default description. */
-	descriptions: Partial<Record<Locale, string>>;
+	descriptions?: Partial<Record<Locale, string>>;
 	/** Options users have to pass through before sending the command
 	 * @default []
 	 */
