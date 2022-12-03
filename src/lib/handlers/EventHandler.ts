@@ -26,7 +26,7 @@ export class EventHandler {
 
 		for await (const category of categories) {
 			const files = await readdir(join(this.directory, category));
-			const validFiles = files.filter((str) => str.endsWith(".js"));
+			const validFiles = files.filter((str) => str.endsWith(".js") || str.endsWith(".cjs") || str.endsWith(".mjs"));
 
 			for await (const file of validFiles) {
 				const { default: event } = await import(join(this.directory, category, file));
