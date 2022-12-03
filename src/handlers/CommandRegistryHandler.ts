@@ -2,8 +2,10 @@ import {
 	ApplicationCommand,
 	ApplicationCommandAutocompleteNumericOption,
 	ApplicationCommandAutocompleteStringOption,
+	ApplicationCommandChannelOption,
 	ApplicationCommandNumericOption,
 	ApplicationCommandOption,
+	ApplicationCommandOptionChoiceData,
 	ApplicationCommandOptionType,
 	ApplicationCommandStringOption,
 	ApplicationCommandSubGroup,
@@ -214,8 +216,33 @@ export class CommandRegistry {
 					if (!("choices" in disc) && "choices" in cmd) return true;
 
 					if ("choices" in disc && "choices" in cmd) {
-						// TODO: check names, values and localization
+						const discChoices = disc.choices ?? [];
+						const cmdChoices = cmd.choices ?? [];
+
+						const someChoice = (choice: ApplicationCommandOptionChoiceData<string>) => {
+							const discChoice = discChoices.find((c) => c.name === choice.name);
+							if (!discChoice) return true;
+
+							if (!_.isEqual(discChoice.nameLocalizations, choice.nameLocalizations)) return true;
+							if (typeof discChoice.value !== typeof choice.value) return true;
+							if (discChoice.value !== choice.value) return true;
+
+							return false;
+						};
+
+						// one of the items has more than expected
+						if (discChoices.length !== cmdChoices.length) return true;
+						if (cmdChoices.some(someChoice)) return true;
 					}
+				}
+				break;
+			case ApplicationCommandOptionType.Channel:
+				{
+					const disc = discord as ApplicationCommandChannelOption;
+					const cmd = command as ApplicationCommandChannelOption;
+
+					if (disc.channelTypes?.length !== cmd.channelTypes?.length) return true;
+					if (!_.isEqual(disc.channelTypes, cmd.channelTypes)) return true;
 				}
 				break;
 			case ApplicationCommandOptionType.Integer:
