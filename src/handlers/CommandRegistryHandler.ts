@@ -140,11 +140,8 @@ export class CommandRegistry {
 	 * @param command the bot Command
 	 */
 	private isDifferent(discord: ApplicationCommand, command: Command): string | null {
-		// @ts-ignore Re-assigning value to make sure Lodash does not return false when checking
-		discord.nameLocalizations ??= undefined;
-
-		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations)) return "nameLocalizations";
-		if (!_.isEqual(discord.descriptionLocalizations, command.descriptions)) return "descriptionLocalizations";
+		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations ?? null)) return "nameLocalizations";
+		if (!_.isEqual(discord.descriptionLocalizations, command.descriptions ?? null)) return "descriptionLocalizations";
 		if (discord.description !== command.description) return "description";
 
 		if (discord.dmPermission !== command.permissions.dm) return "dmPermission";
@@ -182,10 +179,8 @@ export class CommandRegistry {
 		// Expected DiscordOption but received undefined
 		if (!discord) return "undefined";
 
-		// Re-assigning nameLocalizations value to undefined if value is null
-		discord.nameLocalizations ??= undefined;
+		// check the name localizations
 		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations)) return "nameLocalizations";
-
 		// check the description localizations
 		if (!_.isEqual(discord.descriptionLocalizations, command.descriptionLocalizations)) return "descriptionLocalizations";
 		// check the description
@@ -277,8 +272,8 @@ export class CommandRegistry {
 	private getCommandData(command: Command): ApplicationCommandData {
 		return {
 			name: command.name,
-			nameLocalizations: command.nameLocalizations ?? {},
 			description: command.description,
+			nameLocalizations: command.nameLocalizations ?? {},
 			descriptionLocalizations: command.descriptions ?? {},
 			dmPermission: command.permissions.dm,
 			defaultMemberPermissions: command.permissions.default ? new PermissionsBitField(command.permissions.default) : null,
