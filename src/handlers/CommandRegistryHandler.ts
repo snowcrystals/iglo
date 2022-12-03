@@ -3,6 +3,7 @@ import {
 	ApplicationCommandAutocompleteNumericOption,
 	ApplicationCommandAutocompleteStringOption,
 	ApplicationCommandChannelOption,
+	ApplicationCommandData,
 	ApplicationCommandNumericOption,
 	ApplicationCommandOption,
 	ApplicationCommandOptionChoiceData,
@@ -46,7 +47,7 @@ export class CommandRegistry {
 								different.command.result
 							)} was different.`
 						);
-						await different.discord.edit(this.getCommandData(different.command.command));
+						await this.updateCommand(different.discord, different.command.command);
 					} else {
 						this.client.logger.debug(`(CommandRegistry): Creating a new command with name: ${bold(different.command.command.name)}.`);
 						await this.client.application?.commands.create(this.getCommandData(different.command.command));
@@ -72,7 +73,7 @@ export class CommandRegistry {
 	 * Gets the already registered commands from Discord
 	 */
 	private async getRegisteredCommand() {
-		const commands = await this.client.application?.commands.fetch({ withLocalizations: true });
+		const commands = await this.client.application?.commands.fetch({ withLocalizations: true, force: true });
 		if (!commands)
 			throw new InteractionHandlerError(
 				"invalidFetchedCommands",
@@ -267,13 +268,18 @@ export class CommandRegistry {
 		return null;
 	}
 
+	private async updateCommand(discord: ApplicationCommand, command: Command) {
+		const data = this.getCommandData(command);
+		await discord.edit(data);
+	}
+
 	/** Returns an object with all the necessary data to register a command */
-	private getCommandData(command: Command) {
+	private getCommandData(command: Command): ApplicationCommandData {
 		return {
 			name: command.name,
-			nameLocalizations: command.nameLocalizations,
+			nameLocalizations: command.nameLocalizations ?? {},
 			description: command.description,
-			descriptionLocalizations: command.descriptions,
+			descriptionLocalizations: command.descriptions ?? {},
 			dmPermission: command.permissions.dm,
 			defaultMemberPermissions: command.permissions.default ? new PermissionsBitField(command.permissions.default) : null,
 			type: ApplicationCommandType.ChatInput,
