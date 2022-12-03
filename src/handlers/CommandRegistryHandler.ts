@@ -181,6 +181,7 @@ export class CommandRegistry {
 		if (!discord) return true;
 
 		// check the name localizations
+		discord.nameLocalizations ??= undefined;
 		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations)) return true;
 		// check the description localizations
 		if (!_.isEqual(discord.nameLocalizations, command.descriptionLocalizations)) return true;
