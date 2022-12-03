@@ -1,4 +1,16 @@
-import { ApplicationCommand, ApplicationCommandType, Collection, PermissionsBitField } from "discord.js";
+import {
+	ApplicationCommand,
+	ApplicationCommandAutocompleteNumericOption,
+	ApplicationCommandAutocompleteStringOption,
+	ApplicationCommandNumericOption,
+	ApplicationCommandOption,
+	ApplicationCommandOptionType,
+	ApplicationCommandStringOption,
+	ApplicationCommandSubGroup,
+	ApplicationCommandType,
+	Collection,
+	PermissionsBitField
+} from "discord.js";
 import type { IgloClient } from "../Client.js";
 import { InteractionHandlerError } from "../Errors/InteractionHandlerError.js";
 import type { Command } from "../structures/Command.js";
@@ -131,16 +143,95 @@ export class CommandRegistry {
 
 		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations)) return "nameLocalizations";
 		if (!_.isEqual(discord.descriptionLocalizations, command.descriptions)) return "descriptionLocalizations";
+		if (discord.description !== command.description) return "description";
 
 		if (discord.dmPermission !== command.permissions.dm) return "dmPermission";
 		if (!_.isEqual(discord.defaultMemberPermissions, command.permissions.default ? new PermissionsBitField(command.permissions.default) : null))
 			return "defaultMemberPermissions";
 
-		// TODO: fix check because of undefined object properties
-		// -> https://github.com/sapphiredev/framework/blob/main/src/lib/utils/application-commands/computeDifferences.ts
-		if (!_.isEqual(discord.options, command.options)) return "options";
+		if (this.optionsAreDifferent(discord.options, command.options)) return "options";
 
 		return null;
+	}
+
+	private optionsAreDifferent(discord: ApplicationCommandOption[], command: ApplicationCommandOption[]): boolean {
+		// Expected options but received no options
+		if (!discord.length && command.length) return true;
+		// Expected no options but received options
+		if (discord.length && !command.length) return true;
+
+		// Check to see if commands here include options which aren't at Discord
+		if (command.some((opt) => !discord.find((o) => o.name === opt.name))) return true;
+		// Check to see if commands at Discord include options which aren't here
+		if (discord.some((opt) => !command.find((o) => o.name === opt.name))) return true;
+
+		// Map over all options to see if they are the same
+		for (const option of command) {
+			const existingOption = discord.find((opt) => opt.name === option.name);
+			if (this.isOptionDifferent(existingOption, option)) return true;
+		}
+
+		return false;
+	}
+
+	private isOptionDifferent(discord: ApplicationCommandOption | undefined, command: ApplicationCommandOption): boolean {
+		// Expected DiscordOption but received undefined
+		if (!discord) return true;
+
+		// check the name localizations
+		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations)) return true;
+		// check the description localizations
+		if (!_.isEqual(discord.nameLocalizations, command.descriptionLocalizations)) return true;
+		// check the description
+		if (discord.description !== command.description) return true;
+
+		// Check the type
+		if (discord.type !== command.type) return true;
+		// check if autocomplete is different
+		if ((discord.autocomplete ?? false) !== (command.autocomplete ?? false)) return true;
+		// check if required
+		if ("required" in discord) {
+			const cmd = command as typeof discord;
+			if ((discord.required ?? false) !== (cmd.required ?? false)) return true;
+		}
+
+		switch (discord.type) {
+			case ApplicationCommandOptionType.SubcommandGroup:
+			case ApplicationCommandOptionType.Subcommand: {
+				const disc = discord as ApplicationCommandSubGroup;
+				const cmd = command as ApplicationCommandSubGroup;
+				return this.optionsAreDifferent(disc.options!, cmd.options!);
+			}
+			case ApplicationCommandOptionType.String:
+				{
+					const cmd = command as ApplicationCommandStringOption | ApplicationCommandAutocompleteStringOption;
+					const disc = discord as ApplicationCommandStringOption | ApplicationCommandAutocompleteStringOption;
+					if (!_.isEqual(disc.maxLength, cmd.maxLength)) return true;
+					if (!_.isEqual(disc.minLength, cmd.minLength)) return true;
+
+					// Expected choices but got undefined (and reversed)
+					if ("choices" in disc && !("choices" in cmd)) return true;
+					if (!("choices" in disc) && "choices" in cmd) return true;
+
+					if ("choices" in disc && "choices" in cmd) {
+						// TODO: check names, values and localization
+					}
+				}
+				break;
+			case ApplicationCommandOptionType.Integer:
+			case ApplicationCommandOptionType.Number:
+				{
+					const cmd = command as ApplicationCommandNumericOption | ApplicationCommandAutocompleteNumericOption;
+					const disc = discord as ApplicationCommandNumericOption | ApplicationCommandAutocompleteNumericOption;
+					if (!_.isEqual(disc.maxValue, cmd.maxValue)) return true;
+					if (!_.isEqual(disc.minValue, cmd.minValue)) return true;
+				}
+				break;
+			default:
+				break;
+		}
+
+		return false;
 	}
 
 	/** Returns an object with all the necessary data to register a command */
@@ -148,7 +239,7 @@ export class CommandRegistry {
 		return {
 			name: command.name,
 			nameLocalizations: command.nameLocalizations,
-			description: command.descriptions["en-GB"]!,
+			description: command.description,
 			descriptionLocalizations: command.descriptions,
 			dmPermission: command.permissions.dm,
 			defaultMemberPermissions: command.permissions.default ? new PermissionsBitField(command.permissions.default) : null,
