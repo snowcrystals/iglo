@@ -88,7 +88,7 @@ export interface CommandOptions {
 	nameLocalizations?: Partial<Record<Locale, string>>;
 	/** The default description of the command. */
 	description: string;
-	/** A small description about the command. The English translation will also be used as default description. */
+	/** Localized version of description. */
 	descriptions?: Partial<Record<Locale, string>>;
 	/** Options users have to pass through before sending the command
 	 * @default []

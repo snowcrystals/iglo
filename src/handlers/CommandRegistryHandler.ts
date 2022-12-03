@@ -141,7 +141,7 @@ export class CommandRegistry {
 	 */
 	private isDifferent(discord: ApplicationCommand, command: Command): string | null {
 		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations ?? null)) return "nameLocalizations";
-		if (!_.isEqual(discord.descriptionLocalizations, command.descriptions ?? null)) return "descriptionLocalizations";
+		if (!_.isEqual(discord.descriptionLocalizations ?? {}, command.descriptions)) return "descriptionLocalizations";
 		if (discord.description !== command.description) return "description";
 
 		if (discord.dmPermission !== command.permissions.dm) return "dmPermission";
