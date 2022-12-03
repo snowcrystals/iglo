@@ -557,13 +557,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/icicle@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@snowcrystals/icicle@npm:1.0.0"
+"@snowcrystals/icicle@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@snowcrystals/icicle@npm:1.0.1"
   dependencies:
     "@sapphire/timestamp": ^1.0.0
     colorette: ^2.0.19
-  checksum: f3e50fa4de1c587f344e14f44621052ac2c29ad3befa40b57ba9e7c6248d03979a57c8cdf618ba5c9bcfc2f5730549d3467df62a8a34a5521308c511c065f79f
+  checksum: 9fd6a27cc5f4a791293116030ac095368f5d79b79555e78ce8ca51bb4edacc8dc59aa03bfbb6ad7ea875890e61961ca3f1169303d98cbef6a97cc0ccc1e5e4b6
   languageName: node
   linkType: hard
 
@@ -577,7 +577,7 @@ __metadata:
     "@sapphire/eslint-config": ^4.3.8
     "@sapphire/prettier-config": ^1.4.4
     "@sapphire/ts-config": ^3.3.4
-    "@snowcrystals/icicle": ^1.0.0
+    "@snowcrystals/icicle": ^1.0.1
     "@types/lodash": ^4.14.191
     "@types/node": ^18.11.10
     "@typescript-eslint/eslint-plugin": ^5.45.0
