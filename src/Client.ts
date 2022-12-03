@@ -43,6 +43,7 @@ export class IgloClient extends Client {
 		this.logger.debug(`(EventHandler): Loaded a total of ${events} EventListeners.`);
 		this.logger.debug(`(InteractionHandler): Loaded a total of ${interactions} InteractionListeners.`);
 
+		this.on("ready", () => this.commandHandler.registry.start());
 		await this.login(token);
 	}
 }
