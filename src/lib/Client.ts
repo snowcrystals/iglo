@@ -5,6 +5,7 @@ import { EventHandler } from "./handlers/EventHandler.js";
 import { InteractionHandler } from "./handlers/InteractionHandler.js";
 import { Logger } from "@snowcrystals/icicle";
 import type { IgloClientOptions } from "./types.js";
+import InteractionCreateEvent from "../Events/InteractionCreateEvent.js";
 
 export class IgloClient extends Client {
 	public commandHandler: CommandHandler;
@@ -43,7 +44,14 @@ export class IgloClient extends Client {
 		this.logger.debug(`(EventHandler): Loaded a total of ${events} EventListeners.`);
 		this.logger.debug(`(InteractionHandler): Loaded a total of ${interactions} InteractionListeners.`);
 
-		this.on("ready", () => this.commandHandler.registry.start());
+		this.registerCoreEvents();
 		await this.login(token);
+	}
+
+	private registerCoreEvents() {
+		this.on("ready", () => this.commandHandler.registry.start());
+
+		const interactionCreate = new InteractionCreateEvent(this, { name: "interactionCreate" });
+		interactionCreate.load({ filepath: "" });
 	}
 }
