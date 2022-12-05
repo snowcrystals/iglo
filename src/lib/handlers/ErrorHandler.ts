@@ -9,7 +9,7 @@ export class ErrorHandler {
 	public constructor(public client: IgloClient) {}
 
 	/**
-	 * Logs the error and makes sure the user is aware of the situation
+	 * Logs the error and makes sure the user is aware of the situation. This function is overridable for customisability.
 	 * @param error The error that was emitted
 	 * @param interaction The interaction from the user that used the bot
 	 */
