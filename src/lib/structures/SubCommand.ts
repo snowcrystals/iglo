@@ -11,7 +11,7 @@ export class SubCommand extends Command {
 		super(client, options);
 
 		// @ts-ignore yes you can, yes we want
-		this.subcommands = options.subcommands.map((v) => ({ name: v.name, fn: this[v.functionName] }));
+		this.subcommands = options.subcommands.map((v) => ({ name: v.name, fn: this[v.functionName].bind(this) }));
 	}
 
 	public override async _run(interaction: CommandInteraction): Promise<void> {
