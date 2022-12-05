@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits } from "discord.js";
+import { Client } from "discord.js";
 import { CommandHandler } from "./handlers/CommandHandler.js";
 import { ErrorHandler } from "./handlers/ErrorHandler.js";
 import { EventHandler } from "./handlers/EventHandler.js";
@@ -16,15 +16,7 @@ export class IgloClient extends Client {
 	public logger: Logger;
 
 	public constructor(options: IgloClientOptions) {
-		super({
-			intents: [
-				GatewayIntentBits.Guilds,
-				GatewayIntentBits.MessageContent,
-				GatewayIntentBits.GuildMessages,
-				GatewayIntentBits.DirectMessages,
-				GatewayIntentBits.GuildMembers
-			]
-		});
+		super(options.client);
 
 		this.logger = new Logger(options.logger);
 		this.commandHandler = new CommandHandler(this, options.paths.commands);
