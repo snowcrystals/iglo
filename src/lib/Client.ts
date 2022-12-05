@@ -22,7 +22,7 @@ export class IgloClient extends Client {
 		this.commandHandler = new CommandHandler(this, options.paths.commands);
 		this.eventHandler = new EventHandler(this, options.paths.events);
 		this.interactionHandler = new InteractionHandler(this, options.paths.interactions);
-		this.errorHandler = options.errorHandler ?? new ErrorHandler(this);
+		this.errorHandler = new (options.errorHandler ?? ErrorHandler)(this);
 	}
 
 	/**
