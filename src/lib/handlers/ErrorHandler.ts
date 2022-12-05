@@ -39,7 +39,7 @@ export class ErrorHandler {
 	 * @param guild the guild id the error came from
 	 * @param error the Discord API Error that was returned after the request
 	 */
-	private isSilencedError(channelId: string, guild: string | null, error: DiscordAPIError) {
+	protected isSilencedError(channelId: string, guild: string | null, error: DiscordAPIError) {
 		return this.ignoredCodes.includes(error.code as RESTJSONErrorCodes) || this.isDirectinteractionReplyAfterBlock(channelId, guild, error);
 	}
 
@@ -49,7 +49,7 @@ export class ErrorHandler {
 	 * @param guild the guild id the error came from
 	 * @param error the Discord API Error that was returned after the request
 	 */
-	private isDirectinteractionReplyAfterBlock(channelId: string, guild: string | null, error: DiscordAPIError) {
+	protected isDirectinteractionReplyAfterBlock(channelId: string, guild: string | null, error: DiscordAPIError) {
 		if (error.code !== RESTJSONErrorCodes.CannotSendMessagesToThisUser) return false;
 		if (guild !== null) return false;
 		return error.url.includes(`/channels/${channelId}/messages`);
