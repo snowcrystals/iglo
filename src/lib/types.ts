@@ -19,3 +19,11 @@ export interface IgloClientOptions {
 		interactions: string;
 	};
 }
+
+export interface DifferenceData {
+	received: any;
+	expected: any;
+	key: string;
+}
+
+export type Differences = DifferenceData[];
