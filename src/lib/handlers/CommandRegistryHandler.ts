@@ -16,7 +16,9 @@ import {
 } from "discord.js";
 import { bold } from "colorette";
 import _ from "lodash";
-import { Command, IgloClient, InteractionHandlerError } from "@snowcrystals/iglo";
+import type { Differences } from "../types.js";
+import type { IgloClient } from "../Client.js";
+import { InteractionHandlerError, Command } from "../index.js";
 
 export class CommandRegistry {
 	public constructor(public client: IgloClient) {}
@@ -41,9 +43,10 @@ export class CommandRegistry {
 				try {
 					if (different.discord) {
 						this.client.logger.debug(
-							`(CommandRegistry): Updating a new command with name: ${bold(different.command.command.name)} because ${bold(
-								different.command.result
-							)} was different.`
+							`(CommandRegistry): Updating a new command with name: ${bold(
+								different.command.command.name
+							)} the following as different:`,
+							...different.command.differences
 						);
 						await this.updateCommand(different.discord, different.command.command);
 					} else {
@@ -88,7 +91,7 @@ export class CommandRegistry {
 		{
 			command: {
 				command: Command;
-				result: string;
+				differences: Differences;
 			};
 			discord?: ApplicationCommand;
 		},
@@ -98,19 +101,19 @@ export class CommandRegistry {
 		const [registered, unregistered] = commands.partition((cmd) => Boolean(discord.find((dCmd) => dCmd.name === cmd.name)));
 		const different = registered
 			.map((cmd) => {
-				const result = this.isDifferent(discord.find((dCmd) => dCmd.name === cmd.name)!, cmd);
+				const differences = this.isDifferent(discord.find((dCmd) => dCmd.name === cmd.name)!, cmd);
 				return {
-					result,
+					differences,
 					command: cmd
 				};
 			})
-			.filter((res) => Boolean(res.result));
+			.filter((res) => res.differences.length > 0);
 
 		// first return the commands which aren't registered yet
 		for (const command of [...unregistered.values()]) {
 			const obj = {
 				command: {
-					result: "",
+					differences: [],
 					command
 				}
 			};
@@ -124,7 +127,7 @@ export class CommandRegistry {
 				discord: discord.find((dCmd) => dCmd.name === command.command.name)!,
 				command: command as {
 					command: Command;
-					result: string;
+					differences: Differences;
 				}
 			};
 
@@ -137,19 +140,34 @@ export class CommandRegistry {
 	 * @param discord the Discord ApplicationCommand
 	 * @param command the bot Command
 	 */
-	private isDifferent(discord: ApplicationCommand, command: Command): string | null {
-		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations ?? null)) return "nameLocalizations";
-		if (!_.isEqual(discord.descriptionLocalizations ?? {}, command.descriptions)) return "descriptionLocalizations";
-		if (discord.description !== command.description) return "description";
+	private isDifferent(discord: ApplicationCommand, command: Command): Differences {
+		const differences: Differences = [];
 
-		if (discord.dmPermission !== command.permissions.dm) return "dmPermission";
-		if (!_.isEqual(discord.defaultMemberPermissions, command.permissions.default ? new PermissionsBitField(command.permissions.default) : null))
-			return "defaultMemberPermissions";
+		// Check NameLocalizations
+		differences.push(...this.checkLocalization(discord.nameLocalizations ?? {}, command.nameLocalizations ?? {}, "nameLocalizations"));
+		// Check NameLocalizations
+		differences.push(...this.checkLocalization(discord.descriptionLocalizations ?? {}, command.descriptions ?? {}, "descriptionLocalizations"));
+		// Check description
+		if (discord.description !== command.description)
+			differences.push({ key: "description", expected: command.description, received: discord.description });
 
-		const optionsRes = this.optionsAreDifferent(discord.options, command.options);
-		if (optionsRes) return `options(${optionsRes})`;
+		// check DM Permissions
+		if (discord.dmPermission !== command.permissions.dm)
+			differences.push({ key: "dmPermission", expected: command.permissions.dm, received: discord.dmPermission });
+		// Check member Permissions
+		const discordPermissions = discord.defaultMemberPermissions;
+		const commandPermissions = command.permissions.default ? new PermissionsBitField(command.permissions.default) : null;
+		if (discordPermissions && !commandPermissions)
+			differences.push({ key: "defaultMemberPermissions", expected: null, received: discordPermissions.bitfield });
+		else if (!discordPermissions && commandPermissions)
+			differences.push({ key: "defaultMemberPermissions", expected: commandPermissions.bitfield, received: null });
+		else if (discordPermissions && commandPermissions && !_.isEqual(discordPermissions, commandPermissions))
+			differences.push({ key: "defaultMemberPermissions", expected: commandPermissions.bitfield, received: discordPermissions.bitfield });
 
-		return null;
+		// const optionsRes = this.optionsAreDifferent(discord.options, command.options);
+		// differences.push(...optionsRes);
+
+		return differences;
 	}
 
 	private optionsAreDifferent(discord: ApplicationCommandOption[], command: ApplicationCommandOption[]): string | null {
@@ -259,6 +277,17 @@ export class CommandRegistry {
 		}
 
 		return null;
+	}
+
+	private checkLocalization(discord: Record<string, string | null>, command: Record<string, string>, objectKey: string): Differences {
+		const differences: Differences = [];
+		Object.keys(command).forEach((key) => {
+			const received = discord[key];
+			const expected = command[key];
+			if (!received || received !== expected) differences.push({ key: objectKey, expected, received });
+		});
+
+		return differences;
 	}
 
 	private async updateCommand(discord: ApplicationCommand, command: Command) {
