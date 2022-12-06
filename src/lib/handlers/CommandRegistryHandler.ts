@@ -14,11 +14,9 @@ import {
 	Collection,
 	PermissionsBitField
 } from "discord.js";
-import type { IgloClient } from "../Client.js";
-import { InteractionHandlerError } from "../Errors/InteractionHandlerError.js";
-import type { Command } from "../structures/Command.js";
 import { bold } from "colorette";
 import _ from "lodash";
+import { Command, IgloClient, InteractionHandlerError } from "@snowcrystals/iglo";
 
 export class CommandRegistry {
 	public constructor(public client: IgloClient) {}
@@ -180,9 +178,9 @@ export class CommandRegistry {
 		if (!discord) return "undefined";
 
 		// check the name localizations
-		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations)) return "nameLocalizations";
+		if (!_.isEqual(discord.nameLocalizations, command.nameLocalizations ?? null)) return "nameLocalizations";
 		// check the description localizations
-		if (!_.isEqual(discord.descriptionLocalizations, command.descriptionLocalizations)) return "descriptionLocalizations";
+		if (!_.isEqual(discord.descriptionLocalizations, command.descriptionLocalizations ?? null)) return "descriptionLocalizations";
 		// check the description
 		if (discord.description !== command.description) return "description";
 
