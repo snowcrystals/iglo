@@ -99,15 +99,15 @@ export class CommandRegistry {
 		unknown
 	> {
 		const [registered, unregistered] = commands.partition((cmd) => Boolean(discord.find((dCmd) => dCmd.name === cmd.name)));
-		const different = registered
-			.map((cmd) => {
-				const differences = this.isDifferent(discord.find((dCmd) => dCmd.name === cmd.name)!, cmd);
-				return {
-					differences,
-					command: cmd
-				};
-			})
-			.filter((res) => res.differences.length > 0);
+		const different = registered.map((cmd) => {
+			const discordCmd = discord.find((dCmd) => dCmd.name === cmd.name)!;
+			const differences = this.isDifferent(discordCmd, cmd);
+
+			return {
+				differences,
+				command: cmd
+			};
+		});
 
 		// first return the commands which aren't registered yet
 		for (const command of [...unregistered.values()]) {
@@ -123,6 +123,8 @@ export class CommandRegistry {
 
 		// after that return the commands which are registered
 		for (const command of [...different.values()]) {
+			if (!command.differences.length) continue;
+
 			const obj = {
 				discord: discord.find((dCmd) => dCmd.name === command.command.name)!,
 				command: command as {
@@ -164,8 +166,8 @@ export class CommandRegistry {
 		else if (discordPermissions && commandPermissions && !_.isEqual(discordPermissions, commandPermissions))
 			differences.push({ key: "defaultMemberPermissions", expected: commandPermissions.bitfield, received: discordPermissions.bitfield });
 
-		// const optionsRes = this.optionsAreDifferent(discord.options, command.options);
-		// differences.push(...optionsRes);
+		const optionsRes = this.optionsAreDifferent(discord.options, command.options);
+		differences.push(...optionsRes);
 
 		return differences;
 	}
@@ -238,11 +240,14 @@ export class CommandRegistry {
 
 		switch (discord.type) {
 			case ApplicationCommandOptionType.SubcommandGroup:
-			case ApplicationCommandOptionType.Subcommand: {
-				const disc = discord as ApplicationCommandSubGroup;
-				const cmd = command as ApplicationCommandSubGroup;
-				return this.optionsAreDifferent(disc.options ?? [], cmd.options ?? []);
-			}
+			case ApplicationCommandOptionType.Subcommand:
+				{
+					const disc = discord as ApplicationCommandSubGroup;
+					const cmd = command as ApplicationCommandSubGroup;
+					const optRes = this.optionsAreDifferent(disc.options ?? [], cmd.options ?? []);
+					differences.push(...optRes);
+				}
+				break;
 			case ApplicationCommandOptionType.String:
 				{
 					const cmd = command as ApplicationCommandStringOption | ApplicationCommandAutocompleteStringOption;
