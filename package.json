@@ -36,9 +36,9 @@
 		"@sapphire/prettier-config": "^1.4.5",
 		"@sapphire/ts-config": "^3.3.4",
 		"@types/lodash": "^4.14.191",
-		"@types/node": "^18.11.18",
-		"@typescript-eslint/eslint-plugin": "^5.49.0",
-		"@typescript-eslint/parser": "^5.49.0",
+		"@types/node": "^18.11.19",
+		"@typescript-eslint/eslint-plugin": "^5.50.0",
+		"@typescript-eslint/parser": "^5.50.0",
 		"eslint": "^8.33.0",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-prettier": "^4.2.1",
@@ -49,7 +49,7 @@
 		"pinst": "^3.0.0",
 		"prettier": "^2.8.3",
 		"tsup": "^6.5.0",
-		"typescript": "4.9.4"
+		"typescript": "4.9.5"
 	},
 	"dependencies": {
 		"@snowcrystals/icicle": "^1.0.2",
@@ -57,10 +57,10 @@
 		"lodash": "^4.17.21"
 	},
 	"engines": {
-		"node": ">= v18.13.0"
+		"node": ">= v18.14.0"
 	},
 	"publishConfig": {
 		"access": "public"
 	},
-	"packageManager": "yarn@3.3.1"
+	"packageManager": "yarn@3.4.1"
 }
