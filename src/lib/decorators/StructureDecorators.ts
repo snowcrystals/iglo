@@ -2,7 +2,7 @@ import type { IgloClient } from "../Client.js";
 import type { Base } from "../structures/Base.js";
 import type { CommandOptions } from "../structures/Command.js";
 import type { EventListenerOptions } from "../structures/EventListener.js";
-import { ApplyOptionsParam, createClassDecorator, createProxy, ConstructorType } from "./utils.js";
+import { type ApplyOptionsParam, createClassDecorator, createProxy, type ConstructorType } from "./utils.js";
 
 /**
  * Applies the ConstructorOptions to a Command | EventListener extended class

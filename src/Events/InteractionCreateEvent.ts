@@ -7,7 +7,7 @@ import type {
 	MessageComponentInteraction,
 	ModalSubmitInteraction
 } from "discord.js";
-import { ApplyOptions, EventListenerOptions, EventListener, InteractionHandlerError } from "../index.js";
+import { ApplyOptions, type EventListenerOptions, EventListener, InteractionHandlerError } from "../index.js";
 
 @ApplyOptions<EventListenerOptions>({
 	name: "interactionCreate"

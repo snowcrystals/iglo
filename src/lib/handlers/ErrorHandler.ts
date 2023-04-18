@@ -1,5 +1,5 @@
 import { underline, bold } from "colorette";
-import { DiscordAPIError, Interaction, RESTJSONErrorCodes } from "discord.js";
+import { DiscordAPIError, type Interaction, RESTJSONErrorCodes } from "discord.js";
 import type { IgloClient } from "../Client.js";
 import { InteractionHandlerError } from "../Errors/InteractionHandlerError.js";
 
