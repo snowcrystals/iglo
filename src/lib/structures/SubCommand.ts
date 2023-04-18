@@ -2,7 +2,7 @@ import { bold } from "colorette";
 import type { Awaitable, ChatInputCommandInteraction, CommandInteraction } from "discord.js";
 import type { IgloClient } from "../Client.js";
 import { InteractionHandlerError } from "../Errors/InteractionHandlerError.js";
-import { Command, CommandOptions } from "./Command.js";
+import { Command, type CommandOptions } from "./Command.js";
 
 export class SubCommand extends Command {
 	public subcommands: SubCommandType[] = [];
