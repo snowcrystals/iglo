@@ -673,10 +673,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/timestamp@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@sapphire/timestamp@npm:1.0.0"
-  checksum: 2852210825626431cb7aee4da9cd04518778854f5b9e8eafc0fa0a57d499251030ad115f0d0c58e15e5b176cfb495301df7418d95e51c4826e9fadc09ff98bbb
+"@sapphire/timestamp@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@sapphire/timestamp@npm:1.0.1"
+  checksum: 40320946cb8fcbbb610b94019882eb39c900b9af87e4a2d173299efaa062921662d950780c273fd44f4ec9877983d725d28f0b999314f338f3bfc0ab3c45a8cb
   languageName: node
   linkType: hard
 
@@ -697,13 +697,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/icicle@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@snowcrystals/icicle@npm:1.0.2"
+"@snowcrystals/icicle@npm:1.0.3":
+  version: 1.0.3
+  resolution: "@snowcrystals/icicle@npm:1.0.3"
   dependencies:
-    "@sapphire/timestamp": ^1.0.0
+    "@sapphire/timestamp": ^1.0.1
     colorette: ^2.0.19
-  checksum: 37a4da5d458a7572705c2fcb705a684c2ccd55163c0b422c400b62fd75dec9801bd1108d2c3e20695efc5a744f38e673dfc634a710762a744c18f4ed2c998420
+  checksum: 968d93d0b67b7b0129351b5db157af28f5f3fc796113318942330c4dd28fda131eb1d803811378bc9f790718c6b29fb7d536e534a993c970f57d78d9506072dc
   languageName: node
   linkType: hard
 
@@ -717,7 +717,7 @@ __metadata:
     "@sapphire/eslint-config": ^4.4.1
     "@sapphire/prettier-config": ^1.4.5
     "@sapphire/ts-config": ^4.0.0
-    "@snowcrystals/icicle": ^1.0.2
+    "@snowcrystals/icicle": 1.0.3
     "@types/lodash": ^4.14.191
     "@types/node": ^18.15.10
     "@typescript-eslint/eslint-plugin": ^5.56.0
