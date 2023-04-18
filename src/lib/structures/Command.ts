@@ -1,5 +1,5 @@
 import type {
-	APIApplicationCommandOption,
+	ApplicationCommandOptionData,
 	AutocompleteInteraction,
 	Awaitable,
 	CommandInteraction,
@@ -18,7 +18,7 @@ export class Command extends Base implements CommandOptions {
 	public descriptions: Partial<Record<Locale, string>>;
 	public description: string;
 
-	public options: APIApplicationCommandOption[];
+	public options: ApplicationCommandOptionData[];
 	public permissions: CommandPermissions;
 
 	/** The category of the command (automatically set by the commandHandler) */
@@ -93,7 +93,7 @@ export interface CommandOptions {
 	/** Options users have to pass through before sending the command
 	 * @default []
 	 */
-	options?: APIApplicationCommandOption[];
+	options?: ApplicationCommandOptionData[];
 	/** The permissions for the command */
 	permissions?: Partial<CommandPermissions>;
 }
