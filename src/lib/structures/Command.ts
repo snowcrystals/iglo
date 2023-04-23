@@ -11,7 +11,7 @@ import type { IgloClient } from "../Client.js";
 import { InteractionHandlerError } from "../Errors/InteractionHandlerError.js";
 import { Base } from "./Base.js";
 
-export class Command extends Base implements CommandOptions {
+export class Command<Client extends IgloClient = IgloClient> extends Base<Client> implements CommandOptions {
 	public name: string;
 	public nameLocalizations?: Partial<Record<Locale, string>> | undefined;
 
@@ -26,7 +26,7 @@ export class Command extends Base implements CommandOptions {
 	/** @internal The name of the file associated with the command */
 	public filename!: string;
 
-	public constructor(client: IgloClient, options: CommandOptions) {
+	public constructor(client: Client, options: CommandOptions) {
 		super(client);
 		if (!options) throw new InteractionHandlerError("noConstructorOptions");
 

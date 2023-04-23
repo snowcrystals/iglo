@@ -3,7 +3,7 @@ import type { IgloClient } from "../Client.js";
 import { InteractionHandlerError } from "../Errors/InteractionHandlerError.js";
 import { Base } from "./Base.js";
 
-export class InteractionListener extends Base implements InteractionListenerOptions {
+export class InteractionListener<Client extends IgloClient = IgloClient> extends Base<Client> implements InteractionListenerOptions {
 	public name: string;
 	public type: InteractionType.ModalSubmit | ComponentType.Button | ComponentType.SelectMenu;
 
@@ -13,7 +13,7 @@ export class InteractionListener extends Base implements InteractionListenerOpti
 	/** @internal The name of the filepath associated with the InteractionListener */
 	public filepath!: string;
 
-	public constructor(client: IgloClient, options: InteractionListenerOptions) {
+	public constructor(client: Client, options: InteractionListenerOptions) {
 		super(client);
 		if (!options) throw new InteractionHandlerError("noConstructorOptions");
 

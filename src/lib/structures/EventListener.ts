@@ -4,7 +4,7 @@ import type { IgloClient } from "../Client.js";
 import { InteractionHandlerError } from "../Errors/InteractionHandlerError.js";
 import { Base } from "./Base.js";
 
-export class EventListener extends Base implements EventListenerOptions {
+export class EventListener<Client extends IgloClient = IgloClient> extends Base<Client> implements EventListenerOptions {
 	public name: keyof ClientEvents | string;
 	public emitter: EventEmitter;
 	public once?: boolean | undefined;
@@ -12,7 +12,7 @@ export class EventListener extends Base implements EventListenerOptions {
 	/** @internal The name of the filepath associated with the event */
 	public filepath!: string;
 
-	public constructor(client: IgloClient, options: EventListenerOptions) {
+	public constructor(client: Client, options: EventListenerOptions) {
 		super(client);
 		if (!options) throw new InteractionHandlerError("noConstructorOptions");
 

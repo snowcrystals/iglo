@@ -4,10 +4,10 @@ import type { IgloClient } from "../Client.js";
 import { InteractionHandlerError } from "../Errors/InteractionHandlerError.js";
 import { Command, type CommandOptions } from "./Command.js";
 
-export class SubCommand extends Command {
+export class SubCommand<Client extends IgloClient = IgloClient> extends Command<Client> {
 	public subcommands: SubCommandType[] = [];
 
-	public constructor(client: IgloClient, options: SubCommandOptions) {
+	public constructor(client: Client, options: SubCommandOptions) {
 		super(client, options);
 
 		// @ts-ignore yes you can, yes we want
