@@ -1,5 +1,5 @@
 {
-	"project.version": "1.2.1",
+	"project.version": "1.2.2",
 	"project.information": "@snowcrystals/iglo is a Discord.js framework which makes building a bot a lot easier. With its built-in SlashCommand registry system it checks updates the data once a change to the command is detected (a restart is required if code changes are made). The framework currently only supports SlashCommands (no idea why you want to use message commands now that Discord restricted the content to only a limited amount of eligible bots).",
 	"project.installation": ["```bash", "yarn add @snowcrystals/iglo", "npm install @snowcrystals/iglo", "```"],
 	"project.icon": "https://raw.githubusercontent.com/snowcrystals/.github/main/logo.png",
