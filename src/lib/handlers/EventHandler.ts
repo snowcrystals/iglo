@@ -10,7 +10,7 @@ export class EventHandler {
 	/** All the available events */
 	public events = new Collection<string, EventListener>();
 
-	public constructor(public client: IgloClient, public directory: string) {}
+	public constructor(public client: IgloClient, public directory?: string) {}
 
 	/**
 	 * Loads all the events
@@ -18,6 +18,7 @@ export class EventHandler {
 	 * @throws InterActionHandlerError
 	 */
 	public async loadEvents(): Promise<number> {
+		if (!this.directory) return 0;
 		if (!existsSync(this.directory)) throw new InteractionHandlerError("InvalidDirectory", `"${this.directory}" does not exist`);
 
 		const data = await readdir(this.directory);
@@ -83,6 +84,8 @@ export class EventHandler {
 	 * @throws InterActionHandlerError
 	 */
 	public async loadEvent(file: string): Promise<boolean> {
+		if (!this.directory) return false;
+
 		const { default: event } = await import(join(this.directory, file));
 		const evnt = new event(this.client);
 

@@ -19,9 +19,9 @@ export class IgloClient extends Client {
 		super(options.client);
 
 		this.logger = new Logger(options.logger);
-		this.commandHandler = new CommandHandler(this, options.paths.commands);
-		this.eventHandler = new EventHandler(this, options.paths.events);
-		this.interactionHandler = new InteractionHandler(this, options.paths.interactions);
+		this.commandHandler = new CommandHandler(this, options.paths?.commands);
+		this.eventHandler = new EventHandler(this, options.paths?.events);
+		this.interactionHandler = new InteractionHandler(this, options.paths?.interactions);
 		this.errorHandler = new (options.errorHandler ?? ErrorHandler)(this);
 	}
 

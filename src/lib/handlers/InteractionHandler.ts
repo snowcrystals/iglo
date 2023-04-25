@@ -10,7 +10,7 @@ export class InteractionHandler {
 	/** All the available interactions */
 	public interactions = new Collection<string, InteractionListener>();
 
-	public constructor(public client: IgloClient, public directory: string) {}
+	public constructor(public client: IgloClient, public directory?: string) {}
 
 	/**
 	 * Loads all the InteractionListeners
@@ -18,6 +18,7 @@ export class InteractionHandler {
 	 * @throws InterActionHandlerError
 	 */
 	public async loadInteractions(): Promise<number> {
+		if (!this.directory) return 0;
 		if (!existsSync(this.directory)) throw new InteractionHandlerError("InvalidDirectory", `"${this.directory}" does not exist`);
 
 		const data = await readdir(this.directory);
@@ -83,6 +84,8 @@ export class InteractionHandler {
 	 * @throws InterActionHandlerError
 	 */
 	public async loadInteraction(filepath: string): Promise<boolean> {
+		if (!this.directory) return false;
+
 		const { default: interactionListener } = await import(join(this.directory, filepath));
 		const intListener = new interactionListener(this.client);
 

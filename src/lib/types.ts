@@ -10,13 +10,13 @@ export interface IgloClientOptions {
 	/** The Discord.js Client Options */
 	client: ClientOptions;
 	/** The paths for the different types of handlers that should be read */
-	paths: {
+	paths?: {
 		/** example: src/bot/events */
-		events: string;
+		events?: string;
 		/** example: src/bot/commands */
-		commands: string;
+		commands?: string;
 		/** example: src/bot/interactions */
-		interactions: string;
+		interactions?: string;
 	};
 }
 

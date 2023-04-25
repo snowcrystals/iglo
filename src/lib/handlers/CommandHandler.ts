@@ -13,7 +13,7 @@ export class CommandHandler {
 	/** The registry handler responsible for registering all the commands */
 	public registry: CommandRegistry;
 
-	public constructor(public client: IgloClient, public directory: string) {
+	public constructor(public client: IgloClient, public directory?: string) {
 		this.registry = new CommandRegistry(client);
 	}
 
@@ -23,6 +23,8 @@ export class CommandHandler {
 	 * @throws InterActionHandlerError
 	 */
 	public async loadCommands(): Promise<number> {
+		if (!this.directory) return 0;
+
 		if (!existsSync(this.directory)) throw new InteractionHandlerError("InvalidDirectory", `"${this.directory}" does not exist`);
 
 		const data = await readdir(this.directory);
@@ -88,6 +90,8 @@ export class CommandHandler {
 	 * @throws InterActionHandlerError
 	 */
 	public async loadCommand(category: string, file: string): Promise<boolean> {
+		if (!this.directory) return false;
+
 		const { default: command } = await import(join(this.directory, category, file));
 		const cmd = new command(this.client);
 
