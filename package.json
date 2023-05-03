@@ -23,6 +23,7 @@
 		"start:dev": "nodemon ./dist",
 		"start": "node ./dist",
 		"lint": "eslint src",
+		"docs": "typedoc-json-parser",
 		"postinstall": "is-ci || husky install",
 		"prepack": "pinst --disable",
 		"postpack": "pinst --enable",
@@ -49,6 +50,8 @@
 		"pinst": "^3.0.0",
 		"prettier": "^2.8.8",
 		"tsup": "^6.7.0",
+		"typedoc": "^0.24.6",
+		"typedoc-json-parser": "^7.4.0",
 		"typescript": "5.0.4"
 	},
 	"dependencies": {
