@@ -19,7 +19,7 @@
   </a>
   <br />
    <a href="https://vercel.com/?utm_source=snowcrystals&utm_campaign=oss" target="_blank">
-    <img src="/vercel.svg" width="20%">
+    <img src="https://raw.githubusercontent.com/snowcrystals/.github/main/vercel.svg" width="20%">
   </a>
 </div>
 
