@@ -55,7 +55,7 @@
 		"typescript": "5.0.4"
 	},
 	"dependencies": {
-		"@snowcrystals/icicle": "1.0.4",
+		"@snowcrystals/icicle": "2.0.0",
 		"discord.js": "^14.11.0",
 		"lodash": "^4.17.21"
 	},
