@@ -33,7 +33,7 @@
 
 ## Install
 
-```bash
+```
 yarn add @snowcrystals/iglo
 npm install @snowcrystals/iglo
 ```
