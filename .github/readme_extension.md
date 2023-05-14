@@ -1,3 +1,7 @@
+### Documentation
+
+The documentation (API Reference) can be found on our [website](https://snowcrystals.dev/docs/iglo)
+
 ### Examples
 
 The following examples are written in TypeScript with decorators enabled. The examples do not show the required imports (because the only imports you will need are @snowcrystals/iglo components).
