@@ -63,12 +63,9 @@ export default class extends EventListener {
 		const interactionListener = this.client.interactionHandler.interactions.find((intListener) =>
 			CheckFunction(intListener.name, intListener.strategy, intListener.check)
 		);
-		if (
-			!interactionListener ||
-			(interaction.isMessageComponent() && interaction.componentType !== interactionListener.type) ||
-			interaction.type !== interactionListener.type
-		)
-			return;
+		if (!interactionListener) return;
+		if (interaction.isMessageComponent() && interaction.componentType !== interactionListener.type) return;
+		else if (interaction.type !== interactionListener.type) return;
 
 		void interactionListener._run(interaction);
 	}
