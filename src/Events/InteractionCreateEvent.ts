@@ -65,7 +65,7 @@ export default class extends EventListener {
 		);
 		if (!interactionListener) return;
 		if (interaction.isMessageComponent() && interaction.componentType !== interactionListener.type) return;
-		else if (interaction.type !== interactionListener.type) return;
+		else if (interaction.isMessageComponent() && interaction.type !== interactionListener.type) return;
 
 		void interactionListener._run(interaction);
 	}
