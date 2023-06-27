@@ -49,14 +49,14 @@ export default class extends EventListener {
 			if (typeof check === "function") return check(interaction.customId);
 			switch (strategy) {
 				case "include":
-					return str.includes(interaction.customId);
+					return interaction.customId.includes(str);
 				case "startsWith":
-					return str.startsWith(interaction.customId);
+					return interaction.customId.startsWith(str);
 				case "endsWith":
-					return str.endsWith(interaction.customId);
+					return interaction.customId.endsWith(str);
 				case "equal":
 				default:
-					return str === interaction.customId;
+					return interaction.customId === str;
 			}
 		};
 
@@ -65,8 +65,8 @@ export default class extends EventListener {
 		);
 		if (!interactionListener) return;
 		if (interaction.isMessageComponent() && interaction.componentType !== interactionListener.type) return;
-		else if (interaction.isMessageComponent() && interaction.type !== interactionListener.type) return;
+		else if (!interaction.isMessageComponent() && interaction.type !== interactionListener.type) return;
 
-		void interactionListener._run(interaction);
+		void interactionListener._run(interaction as any);
 	}
 }
