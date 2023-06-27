@@ -1,9 +1,15 @@
+[repo]
+name = "iglo"
+owner = "snowcrystals"
+description = "Just like any other Discord.js framework, but better. 🧊"
+license = "MIT"
+
 [project]
 icon = "https://raw.githubusercontent.com/snowcrystals/.github/main/logo.png"
 icon_width = "100px"
-version = "1.2.6"
+version = "1.2.7"
 
 [variables]
 information = "@snowcrystals/iglo is a [Discord.js](https://discordjs.dev) framework which makes building a bot a lot easier. With its built-in SlashCommand registry system it checks updates the data once a change to the command is detected (a restart is required if code changes are made). The framework currently only supports SlashCommands (no idea why you want to use message commands now that Discord restricted the content to only a limited amount of eligible bots)."
-installation = ["```bash", "yarn add @snowcrystals/iglo", "npm install @snowcrystals/iglo", "```", "\n {variables.examples}"]
+installation = [ "```bash", "yarn add @snowcrystals/iglo", "npm install @snowcrystals/iglo", "```", "\n {variables.examples}" ]
 examples = ".github/readme_extension.md"
