@@ -10,7 +10,10 @@ export class EventHandler {
 	/** All the available events */
 	public events = new Collection<string, EventListener>();
 
-	public constructor(public client: IgloClient, public directory?: string) {}
+	public constructor(
+		public client: IgloClient,
+		public directory?: string
+	) {}
 
 	/**
 	 * Loads all the events

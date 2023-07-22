@@ -13,7 +13,10 @@ export class CommandHandler {
 	/** The registry handler responsible for registering all the commands */
 	public registry: CommandRegistry;
 
-	public constructor(public client: IgloClient, public directory?: string) {
+	public constructor(
+		public client: IgloClient,
+		public directory?: string
+	) {
 		this.registry = new CommandRegistry(client);
 	}
 

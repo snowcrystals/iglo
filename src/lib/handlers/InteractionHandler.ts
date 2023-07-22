@@ -10,7 +10,10 @@ export class InteractionHandler {
 	/** All the available interactions */
 	public interactions = new Collection<string, InteractionListener>();
 
-	public constructor(public client: IgloClient, public directory?: string) {}
+	public constructor(
+		public client: IgloClient,
+		public directory?: string
+	) {}
 
 	/**
 	 * Loads all the InteractionListeners
