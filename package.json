@@ -16,7 +16,7 @@
 	"files": [
 		"dist/"
 	],
-	"homepage": "https://github.com/snowcrystals/template",
+	"homepage": "https://github.com/snowcrystals/iglo",
 	"scripts": {
 		"build": "tsup src",
 		"build:watch": "tsc --watch",
@@ -33,13 +33,13 @@
 		"@commitlint/cli": "^17.7.1",
 		"@commitlint/config-angular": "^17.7.0",
 		"@favware/cliff-jumper": "^2.1.1",
-		"@sapphire/eslint-config": "^4.4.3",
-		"@sapphire/prettier-config": "^1.4.5",
+		"@sapphire/eslint-config": "^5.0.1",
 		"@sapphire/ts-config": "^4.0.1",
+		"@snowcrystals/prettier-config": "^1.0.0",
 		"@types/lodash": "^4.14.197",
 		"@types/node": "^18.17.6",
-		"@typescript-eslint/eslint-plugin": "^5.62.0",
-		"@typescript-eslint/parser": "^5.62.0",
+		"@typescript-eslint/eslint-plugin": "^6.4.0",
+		"@typescript-eslint/parser": "^6.4.0",
 		"eslint": "^8.47.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-prettier": "^5.0.0",
