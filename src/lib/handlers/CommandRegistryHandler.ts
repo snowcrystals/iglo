@@ -12,7 +12,8 @@ import {
 	type ApplicationCommandSubGroup,
 	ApplicationCommandType,
 	Collection,
-	PermissionsBitField
+	PermissionsBitField,
+	type ApplicationCommandSubCommand
 } from "discord.js";
 import { bold } from "colorette";
 import _ from "lodash";
@@ -172,7 +173,10 @@ export class CommandRegistry {
 		return differences;
 	}
 
-	private optionsAreDifferent(discord: ApplicationCommandOption[], command: ApplicationCommandOption[]): Differences {
+	private optionsAreDifferent(
+		discord: (ApplicationCommandOption | ApplicationCommandSubCommand)[],
+		command: (ApplicationCommandOption | ApplicationCommandSubCommand)[]
+	): Differences {
 		const differences: Differences = [];
 
 		// Check Options length
@@ -244,7 +248,8 @@ export class CommandRegistry {
 				{
 					const disc = discord as ApplicationCommandSubGroup;
 					const cmd = command as ApplicationCommandSubGroup;
-					const optRes = this.optionsAreDifferent(disc.options ?? [], cmd.options ?? []);
+
+					const optRes = this.optionsAreDifferent((disc.options ?? []) as any, (cmd.options ?? []) as any);
 					differences.push(...optRes);
 				}
 				break;
