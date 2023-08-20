@@ -33,7 +33,7 @@
 		"@commitlint/cli": "^17.7.1",
 		"@commitlint/config-angular": "^17.7.0",
 		"@favware/cliff-jumper": "^2.1.1",
-		"@sapphire/eslint-config": "^4.4.3",
+		"@sapphire/eslint-config": "^5.0.1",
 		"@sapphire/prettier-config": "^1.4.5",
 		"@sapphire/ts-config": "^4.0.1",
 		"@types/lodash": "^4.14.197",
