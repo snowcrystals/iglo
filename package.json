@@ -30,16 +30,16 @@
 		"bump": "cliff-jumper"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.7.1",
+		"@commitlint/cli": "^17.7.2",
 		"@commitlint/config-angular": "^17.7.0",
 		"@favware/cliff-jumper": "^2.2.0",
 		"@sapphire/eslint-config": "^5.0.2",
 		"@sapphire/ts-config": "^4.0.1",
 		"@snowcrystals/prettier-config": "^1.0.0",
 		"@types/lodash": "^4.14.199",
-		"@types/node": "^18.17.19",
-		"@typescript-eslint/eslint-plugin": "^6.7.2",
-		"@typescript-eslint/parser": "^6.7.2",
+		"@types/node": "^18.18.1",
+		"@typescript-eslint/eslint-plugin": "^6.7.3",
+		"@typescript-eslint/parser": "^6.7.3",
 		"eslint": "^8.50.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-prettier": "^5.0.0",
@@ -51,7 +51,7 @@
 		"prettier": "^3.0.3",
 		"tsup": "^7.2.0",
 		"typedoc": "^0.25.1",
-		"typedoc-json-parser": "^9.0.0",
+		"typedoc-json-parser": "^9.0.1",
 		"typescript": "5.2.2"
 	},
 	"dependencies": {
