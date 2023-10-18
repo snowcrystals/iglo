@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout Project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js v16
         uses: actions/setup-node@v3
@@ -67,7 +67,7 @@ jobs:
 
     steps:
       - name: Checkout Project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js v16
         uses: actions/setup-node@v3
@@ -86,7 +86,7 @@ jobs:
           path: docs
 
       - name: Checkout Documentation Project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: "snowcrystals/docs"
           token: ${{ secrets.USER_TOKEN }}

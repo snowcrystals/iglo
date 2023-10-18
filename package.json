@@ -30,28 +30,28 @@
 		"bump": "cliff-jumper"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.7.1",
-		"@commitlint/config-angular": "^17.7.0",
-		"@favware/cliff-jumper": "^2.1.2",
+		"@commitlint/cli": "^17.8.0",
+		"@commitlint/config-angular": "^17.8.0",
+		"@favware/cliff-jumper": "^2.2.0",
 		"@sapphire/eslint-config": "^5.0.2",
 		"@sapphire/ts-config": "^5.0.0",
 		"@snowcrystals/prettier-config": "^1.0.0",
-		"@types/lodash": "^4.14.197",
-		"@types/node": "^18.17.14",
-		"@typescript-eslint/eslint-plugin": "^6.6.0",
-		"@typescript-eslint/parser": "^6.6.0",
-		"eslint": "^8.48.0",
+		"@types/lodash": "^4.14.199",
+		"@types/node": "^18.18.5",
+		"@typescript-eslint/eslint-plugin": "^6.7.5",
+		"@typescript-eslint/parser": "^6.7.5",
+		"eslint": "^8.51.0",
 		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-prettier": "^5.0.0",
+		"eslint-plugin-prettier": "^5.0.1",
 		"husky": "^8.0.3",
 		"is-ci": "^3.0.1",
-		"lint-staged": "^14.0.1",
+		"lint-staged": "^15.0.1",
 		"nodemon": "^3.0.1",
 		"pinst": "^3.0.0",
 		"prettier": "^3.0.3",
 		"tsup": "^7.2.0",
-		"typedoc": "^0.25.1",
-		"typedoc-json-parser": "^8.2.0",
+		"typedoc": "^0.25.2",
+		"typedoc-json-parser": "^9.0.1",
 		"typescript": "5.2.2"
 	},
 	"dependencies": {
@@ -65,5 +65,5 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"packageManager": "yarn@3.6.3"
+	"packageManager": "yarn@3.6.4"
 }
