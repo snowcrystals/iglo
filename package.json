@@ -29,12 +29,13 @@
 		"postpack": "pinst --enable",
 		"bump": "cliff-jumper"
 	},
+	"resolutions": {
+		"load-tsconfig": "^0.2.5"
+	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.8.0",
-		"@commitlint/config-angular": "^17.8.0",
 		"@favware/cliff-jumper": "^2.2.0",
 		"@sapphire/eslint-config": "^5.0.2",
-		"@sapphire/ts-config": "^4.0.1",
+		"@sapphire/ts-config": "^5.0.0",
 		"@snowcrystals/prettier-config": "^1.0.0",
 		"@types/lodash": "^4.14.199",
 		"@types/node": "^18.18.5",
