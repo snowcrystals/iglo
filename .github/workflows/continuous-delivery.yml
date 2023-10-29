@@ -26,7 +26,7 @@ jobs:
           ref: ${{ github.event.inputs.ref || 'main' }}
 
       - name: Use Node.js v16
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16
           cache: yarn
