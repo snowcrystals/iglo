@@ -30,10 +30,10 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v4
 
-      - name: Use Node.js v16
+      - name: Use Node.js v18
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
           cache: yarn
           registry-url: https://registry.npmjs.org/
 
@@ -69,10 +69,10 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v4
 
-      - name: Use Node.js v16
+      - name: Use Node.js v18
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
           cache: yarn
           registry-url: https://registry.yarnpkg.org/
 
