@@ -57,7 +57,7 @@
 	},
 	"dependencies": {
 		"@snowcrystals/icicle": "^2.0.4",
-		"discord.js": "^14.13.0",
+		"discord.js": "^14.14.1",
 		"lodash": "^4.17.21"
 	},
 	"engines": {
