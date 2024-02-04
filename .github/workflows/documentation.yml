@@ -107,7 +107,7 @@ jobs:
           mv docs/api.json out/docs/${{ env.REPOSITORY }}/${NAME}.json
 
       - name: Commit & Push
-        uses: nick-fields/retry@14672906e672a08bd6eeb15720e9ed3ce869cdd4 # v2
+        uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
         with:
           max_attempts: 3
           retry_on: error
