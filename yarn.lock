@@ -542,10 +542,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/node-utilities@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@sapphire/node-utilities@npm:1.0.0"
-  checksum: 10c0/22489bc2bf646dbecc359e3fc5c379ae32254e182688e6b72981e26275e03b0bbfd2c7a34b0e09d943119ac91daafe8a0fcbc9483752c71d80e2054a8111cdce
+"@sapphire/node-utilities@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@sapphire/node-utilities@npm:1.0.2"
+  checksum: 10c0/65ec33badf849fb7d23ba6387567c5d2bea488463e5af0e46f9a348efb08346c5559d32a953f279cf4b1669994d774a25471398c26e415ec202e7da62c04c981
   languageName: node
   linkType: hard
 
@@ -633,7 +633,7 @@ __metadata:
     prettier: "npm:^3.2.5"
     tsup: "npm:^8.0.2"
     typedoc: "npm:^0.25.13"
-    typedoc-json-parser: "npm:^9.0.1"
+    typedoc-json-parser: "npm:^10.0.0"
     typescript: "npm:5.4.5"
   languageName: unknown
   linkType: soft
@@ -1389,13 +1389,6 @@ __metadata:
   version: 11.1.0
   resolution: "commander@npm:11.1.0"
   checksum: 10c0/13cc6ac875e48780250f723fb81c1c1178d35c5decb1abb1b628b3177af08a8554e76b2c0f29de72d69eef7c864d12613272a71fabef8047922bc622ab75a179
-  languageName: node
-  linkType: hard
-
-"commander@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "commander@npm:11.0.0"
-  checksum: 10c0/471c44cd2d31dee556753df6ceb5ef52ccded0ba6308d3ba7a76251aa0edeedf5ac66ca86cb6096cc8fe20997064233c476983d346265f85180e86312724de0c
   languageName: node
   linkType: hard
 
@@ -3662,18 +3655,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:^0.14.1":
-  version: 0.14.2
-  resolution: "shiki@npm:0.14.2"
-  dependencies:
-    ansi-sequence-parser: "npm:^1.1.0"
-    jsonc-parser: "npm:^3.2.0"
-    vscode-oniguruma: "npm:^1.7.0"
-    vscode-textmate: "npm:^8.0.0"
-  checksum: 10c0/ad25241a46e3f9444cb4ac8f00646a196e5619caa3ca9efb7abd8129e4076f2b72464b7d313904f94af0dfa422d3a7d49cd5844cded7eb4c4d9bcc40eeeae179
-  languageName: node
-  linkType: hard
-
 "shiki@npm:^0.14.7":
   version: 0.14.7
   resolution: "shiki@npm:0.14.7"
@@ -4117,37 +4098,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc-json-parser@npm:^9.0.1":
-  version: 9.0.1
-  resolution: "typedoc-json-parser@npm:9.0.1"
+"typedoc-json-parser@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "typedoc-json-parser@npm:10.0.0"
   dependencies:
     "@favware/colorette-spinner": "npm:^1.0.1"
-    "@sapphire/node-utilities": "npm:^1.0.0"
+    "@sapphire/node-utilities": "npm:^1.0.2"
     colorette: "npm:^2.0.20"
-    commander: "npm:^11.0.0"
+    commander: "npm:^12.0.0"
     js-yaml: "npm:^4.1.0"
     tslib: "npm:^2.6.2"
-    typedoc: "npm:^0.25.1"
-    typescript: "npm:^5.2.2"
+    typedoc: "npm:^0.25.13"
+    typescript: "npm:^5.4.5"
   bin:
     typedoc-json-parser: ./dist/bin/index.js
-  checksum: 10c0/2a4ea07c2ae4cec3d463ef24c08b3637f03bd364ea4263a0dfb95eab1c93c66705d8f6bf32aee3e3cc707c37fbe9282ee08b5e9b4194586e23701fb6f92e88eb
-  languageName: node
-  linkType: hard
-
-"typedoc@npm:^0.25.1":
-  version: 0.25.1
-  resolution: "typedoc@npm:0.25.1"
-  dependencies:
-    lunr: "npm:^2.3.9"
-    marked: "npm:^4.3.0"
-    minimatch: "npm:^9.0.3"
-    shiki: "npm:^0.14.1"
-  peerDependencies:
-    typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x
-  bin:
-    typedoc: bin/typedoc
-  checksum: 10c0/11d91302378d618ce451cc5857fcfd4d7923a20075c15ef7b7be663f827d3c2e01260b23ddb97d0d2d47b414b5ed3953a8fabc1adcb582c093d667cf704b5e48
+  checksum: 10c0/cdff182dd08670ebc84bb9ad38889a1796d40ddfe19f62a2a1344020d8464a384d9709829be450b257e8759d3ef82da8db3b854e3d95740893c25c51d3c2de89
   languageName: node
   linkType: hard
 
@@ -4167,23 +4132,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.4.5":
+"typescript@npm:5.4.5, typescript@npm:^5.4.5":
   version: 5.4.5
   resolution: "typescript@npm:5.4.5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/2954022ada340fd3d6a9e2b8e534f65d57c92d5f3989a263754a78aba549f7e6529acc1921913560a4b816c46dce7df4a4d29f9f11a3dc0d4213bb76d043251e
-  languageName: node
-  linkType: hard
-
-"typescript@npm:^5.2.2":
-  version: 5.2.2
-  resolution: "typescript@npm:5.2.2"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/91ae3e6193d0ddb8656d4c418a033f0f75dec5e077ebbc2bd6d76439b93f35683936ee1bdc0e9cf94ec76863aa49f27159b5788219b50e1cd0cd6d110aa34b07
   languageName: node
   linkType: hard
 
@@ -4197,23 +4152,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.4.5#optional!builtin<compat/typescript>":
   version: 5.4.5
   resolution: "typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/db2ad2a16ca829f50427eeb1da155e7a45e598eec7b086d8b4e8ba44e5a235f758e606d681c66992230d3fc3b8995865e5fd0b22a2c95486d0b3200f83072ec9
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
-  version: 5.2.2
-  resolution: "typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/062c1cee1990e6b9419ce8a55162b8dc917eb87f807e4de0327dbc1c2fa4e5f61bc0dd4e034d38ff541d1ed0479b53bcee8e4de3a4075c51a1724eb6216cb6f5
   languageName: node
   linkType: hard
 
