@@ -51,9 +51,9 @@
 		"pinst": "^3.0.0",
 		"prettier": "^3.3.3",
 		"tsup": "^8.2.4",
-		"typedoc": "^0.26.6",
+		"typedoc": "^0.26.7",
 		"typedoc-json-parser": "^10.1.5",
-		"typescript": "5.5.4"
+		"typescript": "5.6.2"
 	},
 	"dependencies": {
 		"@snowcrystals/icicle": "^2.0.4",
