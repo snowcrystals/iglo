@@ -37,7 +37,7 @@
 		"@sapphire/eslint-config": "^5.0.5",
 		"@sapphire/ts-config": "^5.0.1",
 		"@snowcrystals/prettier-config": "^1.0.0",
-		"@types/lodash": "^4.17.9",
+		"@types/lodash": "^4.17.10",
 		"@types/node": "^20.16.10",
 		"@typescript-eslint/eslint-plugin": "^7.18.0",
 		"@typescript-eslint/parser": "^7.18.0",
@@ -51,8 +51,8 @@
 		"pinst": "^3.0.0",
 		"prettier": "^3.3.3",
 		"tsup": "^8.3.0",
-		"typedoc": "^0.26.7",
-		"typedoc-json-parser": "^10.1.5",
+		"typedoc": "^0.26.8",
+		"typedoc-json-parser": "^10.1.6",
 		"typescript": "5.6.2"
 	},
 	"dependencies": {
