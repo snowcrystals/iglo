@@ -835,8 +835,8 @@ __metadata:
     "@sapphire/ts-config": "npm:^5.0.1"
     "@snowcrystals/icicle": "npm:^2.0.4"
     "@snowcrystals/prettier-config": "npm:^1.0.0"
-    "@types/lodash": "npm:^4.17.12"
-    "@types/node": "npm:^20.17.1"
+    "@types/lodash": "npm:^4.17.13"
+    "@types/node": "npm:^20.17.5"
     "@typescript-eslint/eslint-plugin": "npm:^7.18.0"
     "@typescript-eslint/parser": "npm:^7.18.0"
     discord.js: "npm:^14.16.3"
@@ -851,8 +851,8 @@ __metadata:
     pinst: "npm:^3.0.0"
     prettier: "npm:^3.3.3"
     tsup: "npm:^8.3.5"
-    typedoc: "npm:^0.26.10"
-    typedoc-json-parser: "npm:^10.1.6"
+    typedoc: "npm:^0.26.11"
+    typedoc-json-parser: "npm:^10.2.0"
     typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
@@ -887,10 +887,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.17.12":
-  version: 4.17.12
-  resolution: "@types/lodash@npm:4.17.12"
-  checksum: 10c0/106008f628ea3c74ed7ee7842dee79e230c84e3721ac38c293700031adb5bd130113048c22f476dbde0d0c119506b0fc447d4bd62eca922682d11e00e1377967
+"@types/lodash@npm:^4.17.13":
+  version: 4.17.13
+  resolution: "@types/lodash@npm:4.17.13"
+  checksum: 10c0/c3d0b7efe7933ac0369b99f2f7bff9240d960680fdb74b41ed4bd1b3ca60cca1e31fe4046d9abbde778f941a41bc2a75eb629abf8659fa6c27b66efbbb0802a9
   languageName: node
   linkType: hard
 
@@ -910,12 +910,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.17.1":
-  version: 20.17.1
-  resolution: "@types/node@npm:20.17.1"
+"@types/node@npm:^20.17.5":
+  version: 20.17.5
+  resolution: "@types/node@npm:20.17.5"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/214cf1fffff9c80ae0d49d7dd1f04254215d49711276fff44ff6f61e36dc8d53520509a88add6955fe029b2259c87eaf284b43bc1236d4f4f06bd80c46f0e2b8
+  checksum: 10c0/6e6bf7f84365a2ee95a369c48cdb47a93aae2b5029d19660183ba944d7bdbc193e54167076d64a3a11ff28e307b84c90eda350edf8e2029195d1fc27ae6055f4
   languageName: node
   linkType: hard
 
@@ -4841,9 +4841,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc-json-parser@npm:^10.1.6":
-  version: 10.1.6
-  resolution: "typedoc-json-parser@npm:10.1.6"
+"typedoc-json-parser@npm:^10.2.0":
+  version: 10.2.0
+  resolution: "typedoc-json-parser@npm:10.2.0"
   dependencies:
     "@favware/colorette-spinner": "npm:^1.0.1"
     "@sapphire/node-utilities": "npm:^1.0.2"
@@ -4855,13 +4855,13 @@ __metadata:
     typescript: "npm:^5.5.3"
   bin:
     typedoc-json-parser: ./dist/bin/index.js
-  checksum: 10c0/4ddd1f5ca90a75722c29fe1e5f4ee9eb6b2a444d42b6d6d3abda4180cdc42db600717c86a06b1a1ed0f326732e04e8835b8d11f3b3b5a28f33bc72d9dcaa11a3
+  checksum: 10c0/a914f766237efc66953371e0884b74ed94309657c85abae6b872dec2324999bf3bdcdc45b0280e0270324a7c928063de04194199790d9e3c1594cb7b21aefe1a
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.26.10":
-  version: 0.26.10
-  resolution: "typedoc@npm:0.26.10"
+"typedoc@npm:^0.26.11":
+  version: 0.26.11
+  resolution: "typedoc@npm:0.26.11"
   dependencies:
     lunr: "npm:^2.3.9"
     markdown-it: "npm:^14.1.0"
@@ -4872,7 +4872,7 @@ __metadata:
     typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x
   bin:
     typedoc: bin/typedoc
-  checksum: 10c0/0578a8e53dcddcdc8f684e55f224cf086f2d8ba54cb21e05faaa43ced66ddd9429eef85d9b7b5c8a89f865c4c6aaa078fd91ebdd1874074ff68a5920f6e81c14
+  checksum: 10c0/441104f1215af8d7589375691afc993bea1fab7c9b7b91ead22781e994f9f21a7a779a283dc42d72260171164185fad7dbcf61166b0442107d9c7decb84b2aee
   languageName: node
   linkType: hard
 
